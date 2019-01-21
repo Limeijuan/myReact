@@ -23,8 +23,10 @@ export default class Child extends React.Component{
     componentWillReceiveProps(newProps) {
         console.log('will props' + newProps.name)
     };
-    shouldComponentUpdate() {
+    shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate');
+        console.log(nextProps);
+        console.log(nextState);
         return true;
     };
     componentWillUpdate() {

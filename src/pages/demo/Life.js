@@ -1,5 +1,6 @@
 import React from 'react';
-import Child from './Child'
+import './life.css';
+import Child from './Child';
 
 export default class Life extends React.Component{
     constructor(props) {
@@ -12,8 +13,11 @@ export default class Life extends React.Component{
     //     count: 0
     // }
     render() {
-        return <div>
-            <p>React生命周期介绍</p>
+        let style= {
+            background: 'red'
+        }
+        return <div className="Content" style={{padding: 50}}>
+            <p style={style}  className="Content">React生命周期介绍</p>
             <button onClick={this.handleAdd}>点击一下</button>
             <button onClick={this.handleClick.bind(this)}>点击一下2</button>
             <p>{this.state.count}</p>
