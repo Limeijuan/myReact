@@ -39,6 +39,9 @@ const cssRegex = /\.(css|less)$/;
 const cssModuleRegex = /\.module\.(css|less)$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+// 新加less匹配项
+// const lessRegex = /\.less$/;
+// const lessModuleRegex = /\.module\.less$/
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -103,12 +106,25 @@ module.exports = function(webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        },
-      });
+      if (preProcessor === 'less-loader') { // 为less-loader添加配置项
+        loaders.push({
+          loader: require.resolve(preProcessor),
+          options: {
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+            modifyVars: { // 修稿主题颜色
+              'primary-color': '#ff5500',
+            },
+            javascriptEnabled: true // 解决antd修改主题默认配置--style设置为true时报错
+          },
+        });
+      } else {
+        loaders.push({
+          loader: require.resolve(preProcessor),
+          options: {
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          },
+        });
+      }
     }
     return loaders;
   };
@@ -382,6 +398,26 @@ module.exports = function(webpackEnv) {
                 sourceMaps: false,
               },
             },
+            {
+              test: /\.less$/,
+              //include: paths.appSrc,
+              use: [{
+                  loader: "style-loader" // creates style nodes from JS strings
+              }, {
+                   loader: "css-loader" // translates CSS into CommonJS
+              }, {
+                  loader: "less-loader",// compiles Less to CSS
+                  options: {
+                      sourceMap: true,
+                      modifyVars: {
+                          'primary-color': '#ff0000',
+                          'link-color': '#ff0000',
+                          'border-radius-base': '2px',
+                      },
+                      javascriptEnabled: true,
+                  }
+              }]
+            },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
             // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -446,6 +482,23 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               ),
             },
+            // // 在sass的配置下新增less配置
+            // {
+            //   test: lessRegex,
+            //   exclude: lessModuleRegex,
+            //   use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'), // 注意第二个参数
+            // },
+            // {
+            //   test: lessModuleRegex,
+            //   use: getStyleLoaders(
+            //     {
+            //       importLoaders: 2,
+            //       modules: true,
+            //       getLocalIdent: getCSSModuleLocalIdent,
+            //     },
+            //     'less-loader' // 注意第二个参数
+            //   ),
+            // },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
