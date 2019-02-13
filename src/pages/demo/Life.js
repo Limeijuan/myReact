@@ -15,9 +15,9 @@ export default class Life extends React.Component{
     //     count: 0
     // }
     render() {
-        let style= {
-            background: 'red'
-        }
+        // let style= {
+        //     background: 'red'
+        // }
         return <div className="Content" style={{padding: 50}}>
             <p style={style}  className="Content">React生命周期介绍</p>
             <Input/>
