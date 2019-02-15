@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import MenuBar from './components/MenuBar'
 import './style/common.less'
+import './style/reset.less'
 
 export default class Admin extends React.Component{
     render() {
