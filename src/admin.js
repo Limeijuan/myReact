@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import MenuBar from './components/MenuBar'
 import './style/common.less'
 import './style/reset.less'
+import Home from './pages/home'
 
 export default class Admin extends React.Component{
     render() {
@@ -16,7 +17,7 @@ export default class Admin extends React.Component{
                 <Col span={21} className="main" >
                     <Header/>
                     <Row className="content" >
-                        content
+                        <Home/>
                     </Row>
                     <Footer/>
                 </Col>

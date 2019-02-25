@@ -410,8 +410,8 @@ module.exports = function(webpackEnv) {
                   options: {
                       sourceMap: true,
                       modifyVars: {
-                          'primary-color': '#228B22',
-                          'link-color': '#228B22',
+                          'primary-color': '#6699cc',
+                          'link-color': '#6699cc',
                           'border-radius-base': '2px',
                       },
                       javascriptEnabled: true,
