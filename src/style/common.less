@@ -2,17 +2,21 @@
 .container {
     .menu-bar {
         background: @colorR;
-        height: calc(100vh);
     }
     .main {
-        display: flex;
-        flex-direction: column;
+        position:absolute;
+        left: 199px;
+        top: 0px;
+        bottom: 0;
+        right: 0px;
         background: #f1f3f5;
-        height: calc(100vh);
         .content {
-            position: relative;
-            padding:20px;
-            flex: 1;
+            background: #fff;
+            position: absolute;
+            top: 120px;
+            bottom: 100px;
+            left: 20px;
+            right: 20px;
         }
     }
     
