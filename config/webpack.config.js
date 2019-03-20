@@ -482,23 +482,6 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               ),
             },
-            // // 在sass的配置下新增less配置
-            // {
-            //   test: lessRegex,
-            //   exclude: lessModuleRegex,
-            //   use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'), // 注意第二个参数
-            // },
-            // {
-            //   test: lessModuleRegex,
-            //   use: getStyleLoaders(
-            //     {
-            //       importLoaders: 2,
-            //       modules: true,
-            //       getLocalIdent: getCSSModuleLocalIdent,
-            //     },
-            //     'less-loader' // 注意第二个参数
-            //   ),
-            // },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.

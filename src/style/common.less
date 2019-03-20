@@ -2,22 +2,17 @@
 .container {
     .menu-bar {
         background: @colorR;
+        color: #ffffff;
+        height: calc(100vh);
     }
     .main {
-        position:absolute;
-        left: 199px;
-        top: 0px;
-        bottom: 0;
-        right: 0px;
-        background: #f1f3f5;
-        .content {
-            background: #fff;
-            position: absolute;
-            top: 120px;
-            bottom: 100px;
-            left: 20px;
-            right: 20px;
-        }
+        height: calc(100vh);
+        background-color: @colorL;
+        overflow: auto;
+    }
+    .content {
+        position: relative;
+        padding: 20px;
     }
     
 }
