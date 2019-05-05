@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Card, Icon, Radio} from 'antd'
-import './buttons.less'
+import './ui.less'
 
 export default class IButton extends React.Component{
     state = {

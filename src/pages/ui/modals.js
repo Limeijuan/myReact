@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Card, Button } from 'antd'
+import './ui.less'
 
 export default class Modals extends React.Component{
     state = {
@@ -23,10 +24,10 @@ export default class Modals extends React.Component{
     };
     handleOpenTip = (type) => {
         Modal[type]({
-            title: [type],
+            title: type,
             okText: '确定',
             cancelText: '取消',
-            content: '111' + [type] +'----long喵天地'
+            content: '111' + type +'----long喵天地'
         })
     };
     render() {
